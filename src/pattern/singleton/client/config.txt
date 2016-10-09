@@ -1,0 +1,9 @@
+[License]
+Network=1
+LSServer=OPAL.OPENSPIRIT.COM
+NetworkBaseFeature70=37
+[InstallationPath]
+9.0 64=C:\Program Files\IHS\KingdomSuite\TKS90
+10.0 64=C:\Program Files\IHS\KingdomSuite\TKS100
+10.1 64=C:\Program Files\IHS\KingdomSuite\TKS101
+8.8 64=C:\Program Files\KingdomSuite\TKS88
