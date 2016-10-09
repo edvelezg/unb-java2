@@ -1,0 +1,509 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="Java - Empty Project"
+    WorkingDir=".">
+    <Config
+        Name="Debug"
+        Type="java"
+        AppTypeList="application,applet,j2me,custom"
+        DebugCallbackName="jdwp"
+        ObjectDir="classes"
+        AppType="application"
+        Version="8"
+        OutputFile=""
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                Dialog="_java_options_form Compiler"
+                EnableBuildFirst="0"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='javac -g %jbd %cp "%f"'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                Dialog="_java_options_form Compiler"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="javamake"/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                Dialog="_java_options_form Compiler"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="javarebuild"/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_java_options_form Debugger"
+                BuildFirst="1"
+                Deletable="0"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine="java -Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 %cp ."/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_java_options_form Interpreter"
+                BuildFirst="1"
+                Deletable="0"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine="java %cp"/>
+            </Target>
+            <Target
+                Name="UnitTest"
+                MenuCaption="Unit Test"
+                ShowOnMenu="Never"
+                Dialog=""
+                BuildFirst="1"
+                Deletable="0"
+                CaptureOutputWith="ProcessBuffer"
+                PreMacro="unittest_pre_build"
+                PostMacro="unittest_post_build"
+                RunFromDir="%rw">
+                <Exec CmdLine="java %cp org.junit.runner.JUnitCore"/>
+            </Target>
+            <Target
+                Name="dash"
+                MenuCaption="-">
+                <Exec/>
+            </Target>
+            <Target
+                Name="View Javadoc"
+                MenuCaption="&amp;View Javadoc"
+                ShowOnMenu="HideIfNoCmdLine"
+                Dialog="_java_options_form javadoc"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec
+                    CmdLine="javaviewdoc"
+                    Type="Slick-C"/>
+            </Target>
+            <Target
+                Name="Javadoc All"
+                MenuCaption="Javadoc All"
+                ShowOnMenu="HideIfNoCmdLine"
+                Dialog="_java_options_form javadoc"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="javamakedoc javadoc -d docs %cp %{*.java}"/>
+            </Target>
+            <Target
+                Name="dash2"
+                MenuCaption="-">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Make Jar"
+                MenuCaption="Make &amp;Jar"
+                ShowOnMenu="HideIfNoCmdLine"
+                Dialog="_java_options_form jar"
+                CaptureOutputWith="ProcessBuffer"
+                BuildFirst="1"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='javamakejar jar cvf ".jar" %{*}'/>
+            </Target>
+            <Target
+                Name="Java Options"
+                MenuCaption="Java &amp;Options"
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0">
+                <Exec
+                    CmdLine="javaoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <AppTypeTargets Name="Debug">
+            <AppTypeTarget
+                MenuCaption="&amp;Debug"
+                Dialog="_java_options_form Appletviewer"
+                BuildFirst="1"
+                Deletable="0"
+                AppType="applet"
+                RunFromDir="%rw">
+                <Exec CmdLine="appletviewer -J-Xdebug -J-Xnoagent -J-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 %h"/>
+            </AppTypeTarget>
+            <AppTypeTarget
+                MenuCaption="&amp;Debug"
+                BuildFirst="1"
+                Deletable="0"
+                AppType="custom"
+                RunFromDir="%rw">
+                <Exec CmdLine="jdb %cp %&lt;e"/>
+            </AppTypeTarget>
+        </AppTypeTargets>
+        <AppTypeTargets Name="Execute">
+            <AppTypeTarget
+                MenuCaption="E&amp;xecute"
+                Dialog="_java_options_form Appletviewer"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                AppletClass=""
+                Deletable="0"
+                AppType="applet"
+                RunFromDir="%rw">
+                <Exec CmdLine="appletviewer %h"/>
+            </AppTypeTarget>
+            <AppTypeTarget
+                MenuCaption="E&amp;xecute"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                Deletable="0"
+                AppType="custom"
+                RunFromDir="%rw">
+                <Exec CmdLine="java %cp %&lt;e"/>
+            </AppTypeTarget>
+        </AppTypeTargets>
+    </Config>
+    <Config
+        Name="Release"
+        Type="java"
+        AppTypeList="application,applet,custom"
+        DebugCallbackName="jdwp"
+        ObjectDir="classes"
+        AppType="application"
+        Version="8"
+        OutputFile=""
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                Dialog="_java_options_form Compiler"
+                EnableBuildFirst="0"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='javac %jbd %cp "%f"'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                Dialog="_java_options_form Compiler"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="javamake"/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                Dialog="_java_options_form Compiler"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="javarebuild"/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_java_options_form Debugger"
+                BuildFirst="1"
+                Deletable="0"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine="java -Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 %cp ."/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_java_options_form Interpreter"
+                BuildFirst="1"
+                Deletable="0"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine="java %cp"/>
+            </Target>
+            <Target
+                Name="UnitTest"
+                MenuCaption="Unit Test"
+                ShowOnMenu="Never"
+                Dialog=""
+                BuildFirst="1"
+                Deletable="0"
+                CaptureOutputWith="ProcessBuffer"
+                PreMacro="unittest_pre_build"
+                PostMacro="unittest_post_build"
+                RunFromDir="%rw">
+                <Exec CmdLine="java %cp org.junit.runner.JUnitCore"/>
+            </Target>
+            <Target
+                Name="dash"
+                MenuCaption="-">
+                <Exec/>
+            </Target>
+            <Target
+                Name="View Javadoc"
+                MenuCaption="&amp;View Javadoc"
+                ShowOnMenu="HideIfNoCmdLine"
+                Dialog="_java_options_form javadoc"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec
+                    CmdLine="javaviewdoc"
+                    Type="Slick-C"/>
+            </Target>
+            <Target
+                Name="Javadoc All"
+                MenuCaption="Javadoc All"
+                ShowOnMenu="HideIfNoCmdLine"
+                Dialog="_java_options_form javadoc"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine="javamakedoc javadoc -d docs %cp %{*.java}"/>
+            </Target>
+            <Target
+                Name="dash2"
+                MenuCaption="-">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Make Jar"
+                MenuCaption="Make &amp;Jar"
+                ShowOnMenu="HideIfNoCmdLine"
+                Dialog="_java_options_form jar"
+                CaptureOutputWith="ProcessBuffer"
+                BuildFirst="1"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='javamakejar jar cvf ".jar" %{*}'/>
+            </Target>
+            <Target
+                Name="Java Options"
+                MenuCaption="Java &amp;Options"
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0">
+                <Exec
+                    CmdLine="javaoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <AppTypeTargets Name="Debug">
+            <AppTypeTarget
+                MenuCaption="&amp;Debug"
+                Dialog="_java_options_form Appletviewer"
+                BuildFirst="1"
+                Deletable="0"
+                AppType="applet"
+                RunFromDir="%rw">
+                <Exec CmdLine="appletviewer -J-Xdebug -J-Xnoagent -J-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 %h"/>
+            </AppTypeTarget>
+            <AppTypeTarget
+                MenuCaption="&amp;Debug"
+                BuildFirst="1"
+                Deletable="0"
+                AppType="custom"
+                RunFromDir="%rw">
+                <Exec CmdLine="jdb %cp %&lt;e"/>
+            </AppTypeTarget>
+        </AppTypeTargets>
+        <AppTypeTargets Name="Execute">
+            <AppTypeTarget
+                MenuCaption="E&amp;xecute"
+                Dialog="_java_options_form Appletviewer"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                AppletClass=""
+                Deletable="0"
+                AppType="applet"
+                RunFromDir="%rw">
+                <Exec CmdLine="appletviewer %h"/>
+            </AppTypeTarget>
+            <AppTypeTarget
+                MenuCaption="E&amp;xecute"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                Deletable="0"
+                AppType="custom"
+                RunFromDir="%rw">
+                <Exec CmdLine="java %cp %&lt;e"/>
+            </AppTypeTarget>
+        </AppTypeTargets>
+    </Config>
+    <CustomFolders>
+        <Folder
+            Name="Source Files"
+            Filters="*.java;*.c;*.cpp;*.cxx;*.hxx;*.prg;*.pas;*.dpr;*.asm;*.bas;*.sc;*.e"/>
+        <Folder
+            Name="Bitmaps"
+            Filters="*.jpg;*.gif;*.bmp"/>
+        <Folder
+            Name="Other Files"
+            Filters=""/>
+    </CustomFolders>
+    <Files AutoFolders="PackageView">
+        <Folder
+            Name="algorithms"
+            Type="Package">
+            <F N="src/algorithms/BinarySearch.java"/>
+            <F N="src/algorithms/BinarySearchDuplicates.java"/>
+            <F N="src/algorithms/CountRotations.java"/>
+            <F N="src/algorithms/FindElementInRotatedArray.java"/>
+        </Folder>
+        <Folder
+            Name="algorithms.nary.tree"
+            Type="Package">
+            <F N="src/algorithms/nary/tree/NaryTree.java"/>
+            <F N="src/algorithms/nary/tree/Node.java"/>
+        </Folder>
+        <Folder
+            Name="algorithms.sorting"
+            Type="Package">
+            <F N="src/algorithms/sorting/MergeSort.java"/>
+        </Folder>
+        <Folder
+            Name="bitmanipulation"
+            Type="Package">
+            <F N="src/bitmanipulation/BitClass.java"/>
+        </Folder>
+        <Folder
+            Name="com.interview.dynamic"
+            Type="Package">
+            <F N="src/com/interview/dynamic/LongestCommonSubsequence.java"/>
+            <F N="src/com/interview/dynamic/MaximumSumSubsequence.java"/>
+        </Folder>
+        <Folder
+            Name="com.interview.dynamic.practice"
+            Type="Package">
+            <F N="src/com/interview/dynamic/practice/LCS.java"/>
+        </Folder>
+        <Folder
+            Name="com.interview.tree"
+            Type="Package">
+            <F N="src/com/interview/tree/BinarySearchTree.java"/>
+        </Folder>
+        <Folder
+            Name="concurrency"
+            Type="Package">
+            <F N="src/concurrency/Account.java"/>
+            <F N="src/concurrency/BlockingQueueExample.java"/>
+            <F N="src/concurrency/BusyWaiting.java"/>
+            <F N="src/concurrency/DiningPhilosophers.java"/>
+            <F N="src/concurrency/Multithreading.java"/>
+            <F N="src/concurrency/MutexThread.java"/>
+            <F N="src/concurrency/NoBusyWait.java"/>
+            <F N="src/concurrency/ProdCon.java"/>
+            <F N="src/concurrency/ProdConQueue.java"/>
+            <F N="src/concurrency/ProducerConsumer.java"/>
+            <F N="src/concurrency/Semaphore.java"/>
+            <F N="src/concurrency/ThreadsExample.java"/>
+        </Folder>
+        <Folder
+            Name="data.structures"
+            Type="Package">
+            <F N="src/data/structures/ArrayList.java"/>
+            <F N="src/data/structures/BinarySearchTree.java"/>
+            <F N="src/data/structures/BinaryTree.java"/>
+            <F N="src/data/structures/BSTTree.java"/>
+            <F N="src/data/structures/Graph.java"/>
+            <F N="src/data/structures/GraphNode.java"/>
+            <F N="src/data/structures/GraphTest.java"/>
+            <F N="src/data/structures/LinkedList.java"/>
+            <F N="src/data/structures/Queue.java"/>
+            <F N="src/data/structures/Stack.java"/>
+        </Folder>
+        <Folder
+            Name="data.structures.graphs.adjacency"
+            Type="Package">
+            <F N="src/data/structures/graphs/adjacency/Graph.java"/>
+        </Folder>
+        <Folder
+            Name="data.structures.practice"
+            Type="Package">
+            <F N="src/data/structures/practice/GraphNode.java"/>
+            <F N="src/data/structures/practice/GraphTest.java"/>
+        </Folder>
+        <Folder
+            Name="exception.handling"
+            Type="Package">
+            <F N="src/exception/handling/ExceptionTest.java"/>
+        </Folder>
+        <Folder
+            Name="google.interview"
+            Type="Package">
+            <F N="src/google/interview/VectorTree.java"/>
+        </Folder>
+        <Folder
+            Name="other"
+            Type="Package">
+            <F N="src/other/AVLNode.java"/>
+            <F N="src/other/AVLTree.java"/>
+            <F N="src/other/BinaryTree.java"/>
+            <F N="src/other/LinkedTree.java"/>
+            <F N="src/other/Permutations.java"/>
+            <F N="src/other/Quicksort.java"/>
+            <F N="src/other/Recursion.java"/>
+            <F N="src/other/StringLib.java"/>
+            <F N="src/other/StringRotator.java"/>
+            <F N="src/other/StringsAndArrays.java"/>
+            <F N="src/other/TrieNode.java"/>
+        </Folder>
+        <Folder
+            Name="pattern.factory"
+            Type="Package">
+            <F N="src/pattern/factory/IElectronicToy.java"/>
+            <F N="src/pattern/factory/Lion.java"/>
+            <F N="src/pattern/factory/TeddyBear.java"/>
+            <F N="src/pattern/factory/ToyFactory.java"/>
+            <F N="src/pattern/factory/ToyType.java"/>
+        </Folder>
+        <Folder
+            Name="pattern.factory.client"
+            Type="Package">
+            <F N="src/pattern/factory/client/Client.java"/>
+        </Folder>
+        <Folder
+            Name="pattern.singleton"
+            Type="Package">
+            <F N="src/pattern/singleton/ConfigReader.java"/>
+        </Folder>
+        <Folder
+            Name="pattern.singleton.client"
+            Type="Package">
+            <F N="src/pattern/singleton/client/Client.java"/>
+            <F N="src/pattern/singleton/client/config.txt"/>
+        </Folder>
+        <Folder
+            Name="recursion"
+            Type="Package">
+            <F N="src/recursion/HeadTail.java"/>
+        </Folder>
+        <Folder Name="src/algorithms/tree">
+            <F N="src/algorithms/tree/BinaryTree.java"/>
+            <F N="src/algorithms/tree/NaryTree.java"/>
+            <F N="src/algorithms/tree/Node.java"/>
+        </Folder>
+    </Files>
+</Project>
