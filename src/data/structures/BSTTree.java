@@ -312,8 +312,6 @@ public class BSTTree {
         printLists(t);
         t.delete(7);
         printLists(t);
-        
-//        t.printSideways();
     }
 
     private static void printLists(BSTTree t) {
