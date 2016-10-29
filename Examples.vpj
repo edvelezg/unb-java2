@@ -3,7 +3,8 @@
     Version="10.0"
     VendorName="SlickEdit"
     TemplateName="Java - Empty Project"
-    WorkingDir=".">
+    WorkingDir="."
+    VCSProject="Git:">
     <Config
         Name="Debug"
         Type="java"
