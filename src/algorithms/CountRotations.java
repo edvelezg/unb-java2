@@ -1,37 +1,56 @@
 package algorithms;
 
 class CountRotations {
-    
-    public CountRotations() { 
-        
+
+    public CountRotations() {
     }
 
-    public static void main (String args[]) {
-        // int [] a = new int[] {6, 0, 1, 2, 3, 4, 5}; // 1 rot
-        // int [] a = new int[] {5, 6, 0, 1, 2, 3, 4}; // 2 rot
-        // int [] a = new int[] {4, 5, 6, 0, 1, 2, 3}; // 1 rot
-        int [] a = new int[] {3, 4, 5, 6, 0, 1, 2}; // 1 rot
-        // int [] a = new int[] {1, 2, 3, 4, 5, 6, 0}; // 6 rot
-        // int [] a = new int[] {0, 1, 2, 3, 4, 5, 6};
-        System.out.println("rot cnt: " + countRots(a, a.length)); 
-    }
+    public static void main(String args[]) {
+        int num = 7;
+        int[] a = new int[num];
+        for ( int i = 0; i < num; i++ ) {
+            int k = 0;
+            for ( int j = i; j < num; j++ ) {
+                System.out.print(String.format("%d ", j));
+                a[k] = j;
+                ++k;
+            }
 
-    public static int countRots(int[] a, int n) { 
-
-        if (a[0] <= a[n-1]) return 0;
-
-        int hi = n-1;
-        int lo = 0;
-
-        while (lo <= hi) {
-            int m = (hi + lo) / 2;
-            int nxt = (m + 1) % n;
-            int prv = (m - 1) % n;
-            if (a[m] <= a[nxt] && a[m] <= a[prv]) return m;
-            else if (a[m] <= a[hi]) hi = m - 1;
-            else lo = m + 1;
+            for ( int l = 0; k < num; l++, k++) {
+                System.out.print(String.format("%d ", l));
+                a[k] = l;
+            }
+            System.out.println();
+            System.out.println(countRots(a));
         }
 
-        return -1;
+//        System.out.println("rotation count: " + countRots(a, a.length));
     }
+
+    public static int countRots(int[] a) {
+
+        int l = 0;
+        int h = a.length - 1;
+
+        if ( a[l] < a[h] ) return 0;
+
+        while ( l <= h ) {
+            int m = (l + h) / 2;
+            if (isPivot(a, m)) return m;
+            if (isPivot(a, l)) return l;
+            if (isPivot(a, h)) return h;
+            if ( a[m] <= a[h] ) h = m-1;
+            else l = m+1;
+        }
+
+        return 0;
+
+    }
+
+	private static boolean isPivot(int[] a, int m) {
+		int p = (m - 1 + a.length) % a.length;
+		int f = (m + 1) % a.length;
+//		System.out.println(p);
+		return (a[m] < a[p] && a[m] < a[f]);
+	}
 }
