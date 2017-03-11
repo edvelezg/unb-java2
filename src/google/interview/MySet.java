@@ -1,5 +1,6 @@
 package google.interview;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -36,6 +37,12 @@ public class MySet {
         return array[idx];
     }
     
+    private static void dou(double[] test) {
+        test[0] = 3.0;
+        test[1] = 4.2;
+
+    }
+    
     public static void main(String[] args) {
         MySet s = new MySet();
         int elem = 0;
@@ -63,5 +70,11 @@ public class MySet {
         System.out.println(elem);
         elem = s.getRandomElement();
         System.out.println(elem);
+        
+        double[] a = {1.1, 2.2, 3.3, 4.4};
+        System.out.println(Arrays.toString(a));
+        dou(a);
+        System.out.println(Arrays.toString(a));
+        
     }
 }
