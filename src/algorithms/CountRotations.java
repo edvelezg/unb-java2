@@ -10,9 +10,9 @@ class CountRotations {
         // int [] a = new int[] {6, 0, 1, 2, 3, 4, 5}; // 1 rot
         // int [] a = new int[] {5, 6, 0, 1, 2, 3, 4}; // 2 rot
         // int [] a = new int[] {4, 5, 6, 0, 1, 2, 3}; // 1 rot
-        int [] a = new int[] {3, 4, 5, 6, 0, 1, 2}; // 1 rot
+//        int [] a = new int[] {3, 4, 5, 6, 0, 1, 2}; // 1 rot
         // int [] a = new int[] {1, 2, 3, 4, 5, 6, 0}; // 6 rot
-        // int [] a = new int[] {0, 1, 2, 3, 4, 5, 6};
+         int [] a = new int[] {0, 1, 2, 3, 4, 5, 6};
         System.out.println("rot cnt: " + countRots(a, a.length)); 
     }
 
