@@ -103,35 +103,41 @@ public class BitClass {
     }
 
     public static boolean GetBit(int n, int index) {
-        System.out.println("GetBit(n="+n+"index="+index+")");
-//        System.out.println("(1 << index)");
-//        System.out.println(String.format("%32s", Integer.toBinaryString(1 << index)).replace(' ', '0'));
-//        System.out.println("(n & (1 << index))");
-//        System.out.println(String.format("%32s", Integer.toBinaryString(n & (1 << index))).replace(' ', '0'));
-//        System.out.println("((n & (1 << index)) > 0)");
+        System.out.println("GetBit(n=" + n + "index=" + index + ")");
+        // System.out.println("(1 << index)");
+        // System.out.println(String.format("%32s", Integer.toBinaryString(1 <<
+        // index)).replace(' ', '0'));
+        // System.out.println("(n & (1 << index))");
+        // System.out.println(String.format("%32s", Integer.toBinaryString(n &
+        // (1 << index))).replace(' ', '0'));
+        // System.out.println("((n & (1 << index)) > 0)");
         return ((n & (1 << index)) > 0);
     }
 
     public static int SetBit(int n, int index, boolean b) {
-        System.out.println("SetBit(n="+ n+ ", " +"index="+index + ", " + "b="+b+")");
+        System.out.println("SetBit(n=" + n + ", " + "index=" + index + ", " + "b=" + b + ")");
         if (b) {
-//            System.out.println("if (b) {");
-//            System.out.println("(1 << index)");
-//            System.out.println(String.format("%32s", Integer.toBinaryString(1 << index)).replace(' ', '0'));
-//            System.out.println("n | (1 << index);");
-//            System.out.println(String.format("%32s", Integer.toBinaryString(n | (1 << index))).replace(' ', '0'));
+            // System.out.println("if (b) {");
+            // System.out.println("(1 << index)");
+            // System.out.println(String.format("%32s", Integer.toBinaryString(1
+            // << index)).replace(' ', '0'));
+            // System.out.println("n | (1 << index);");
+            // System.out.println(String.format("%32s", Integer.toBinaryString(n
+            // | (1 << index))).replace(' ', '0'));
             return n | (1 << index);
         } else {
             int mask = ~(1 << index);
-//            System.out.println(String.format("%32s", Integer.toBinaryString(mask)).replace(' ', '0'));
-//            System.out.println("n & ~(1 << index)");
-//            System.out.println(String.format("%32s", Integer.toBinaryString(n & mask)).replace(' ', '0'));
+            // System.out.println(String.format("%32s",
+            // Integer.toBinaryString(mask)).replace(' ', '0'));
+            // System.out.println("n & ~(1 << index)");
+            // System.out.println(String.format("%32s", Integer.toBinaryString(n
+            // & mask)).replace(' ', '0'));
             return n & mask;
         }
     }
 
     public static int GetNext_NP(int n) {
-        System.out.println("GetNext_NP(n="+n+")");
+        System.out.println("GetNext_NP(n=" + n + ")");
         System.out.println(String.format("%32s", Integer.toBinaryString(n)).replace(' ', '0'));
         if (n <= 0)
             return -1;
@@ -177,7 +183,7 @@ public class BitClass {
     }
 
     public static int GetPrevious_NP(int n) {
-        System.out.println("GetPrevious_NP(n="+n+")");
+        System.out.println("GetPrevious_NP(n=" + n + ")");
         if (n <= 0)
             return -1; // Error
 
@@ -218,11 +224,11 @@ public class BitClass {
         // prog1();
         // prog2();
 
-//        int n = 1732; // 11011000100
+        // int n = 1732; // 11011000100
         int n = 2147483647; // ‭011111111111‬
         GetNext_NP(n);
-        
-//        GetPrevious_NP(n);
+
+        // GetPrevious_NP(n);
     }
 
     @SuppressWarnings("unused")
