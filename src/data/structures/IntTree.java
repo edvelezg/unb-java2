@@ -173,25 +173,36 @@ public class IntTree {
         IntTreeNode root = getOverallRoot();
         Queue<IntTreeNode> q = new ArrayDeque<IntTreeNode>();
         q.add(root);
-        int lvl = 0;
-        int count = 1;
         while (!q.isEmpty()) {
-            count--;
-            if (count == 0) {
-                lvl += 1;
-            }
             IntTreeNode node = q.remove();
-            System.out.println("At level " + lvl + ": " + node.data);
             if (node.right != null) {
-                count++;
-                q.add(node.left);
+                q.add(node.right);
             }
             if (node.left != null) {
-                count++;
-                q.add(node.right);
+                q.add(node.left);
             }
         }
     }
+    
+    public void BFS2() {
+        IntTreeNode root = getOverallRoot();
+        Queue<IntTreeNode> curr = new ArrayDeque<IntTreeNode>();
+        Queue<IntTreeNode> next = new ArrayDeque<IntTreeNode>();
+        next.add(root);
+        while (!next.isEmpty()) {
+        	if (curr.isEmpty()) {
+				
+			}
+            IntTreeNode node = next.remove();
+            if (node.right != null) {
+                next.add(node.right);
+            }
+            if (node.left != null) {
+                next.add(node.left);
+            }
+        }
+    }
+
 
     public int sum() {
         return sum(getOverallRoot());
@@ -372,14 +383,14 @@ public class IntTree {
         IntTree t = new IntTree();
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         t.createBST(array);
-        t.printPreorder();
+//        t.printPreorder();
 
-        t.sumNodes(t.getOverallRoot(), 0);
+//        t.sumNodes(t.getOverallRoot(), 0);
         t.BFS();
-        System.out.println(t.sum());
-        System.out.println(t.countLevels());
-        System.out.println(t.countLeaves());
-        t.inOrderNORecursion();
+//        System.out.println(t.sum());
+//        System.out.println(t.countLevels());
+//        System.out.println(t.countLeaves());
+//        t.inOrderNORecursion();
 
         // t.printBoundary();
         // System.out.println();

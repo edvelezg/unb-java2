@@ -111,7 +111,6 @@ public class Heap<T extends Comparable<T>> {
     }
     
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         Heap<Integer> hp = new Heap<Integer>();
         sc = new Scanner("1\n2\n3\n4\n5\n6\n7\n8\n9\ndone");
         String line = sc.next();
