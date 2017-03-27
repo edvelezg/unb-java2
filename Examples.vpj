@@ -428,6 +428,7 @@
             <F N="src/data/structures/GraphNode.java"/>
             <F N="src/data/structures/GraphTest.java"/>
             <F N="src/data/structures/LinkedList.java"/>
+            <F N="src/data/structures/MyQueue.java"/>
             <F N="src/data/structures/Queue.java"/>
             <F N="src/data/structures/Stack.java"/>
         </Folder>
@@ -490,6 +491,12 @@
             Name="recursion"
             Type="Package">
             <F N="src/recursion/HeadTail.java"/>
+        </Folder>
+        <Folder Name="src">
+            <F
+                N="src/*.java"
+                Recurse="1"
+                Excludes="output/;expected/"/>
         </Folder>
         <Folder Name="src/algorithms/tree">
             <F N="src/algorithms/tree/BinaryTree.java"/>

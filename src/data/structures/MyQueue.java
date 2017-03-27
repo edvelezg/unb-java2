@@ -11,6 +11,17 @@ class MyQueue {
             last.next = n;
             last = n;
         }
+//        print();
+    }
+    
+    public void print()
+    {
+        GraphNode node = first;
+        while (node != null) {
+            System.out.print(node.val + " => ");
+            node = node.next;
+        }
+        System.out.println(" null ");
     }
 
     public GraphNode dequeue() {

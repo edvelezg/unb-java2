@@ -1,6 +1,7 @@
 package data.structures;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 class BSTN {
@@ -13,7 +14,7 @@ class BSTN {
         this.left = left;
         this.right = right;
     }
-    
+
     @Override
     public String toString() {
         return String.format("%d", this.val);
@@ -140,16 +141,15 @@ public class BSTTree {
         } else if (root.val == val) {
             return root;
         } else if (root.val > val) {
-            recursiveFind(root.left, val);
+            return recursiveFind(root.left, val);
         } else {
-            recursiveFind(root.right, val);
+            return recursiveFind(root.right, val);
         }
-        return null;
     }
 
     public void createBST(int[] a) {
-        createBST(a, 0, a.length-1);
-//        root = createBST(a, 0, a.length - 1);
+        createBST(a, 0, a.length - 1);
+        // root = createBST(a, 0, a.length - 1);
     }
 
     public BSTN createBST2(int[] a, int start, int end) {
@@ -190,32 +190,29 @@ public class BSTTree {
             printSideways(root.right, level + 1);
         }
     }
-    
-    public LinkedList<LinkedList<BSTN>> getLists()
-    {
-        LinkedList<LinkedList<BSTN>> lists = new LinkedList<LinkedList<BSTN>>();
-        LinkedList<BSTN> curr;
-        LinkedList<BSTN> next = new LinkedList<BSTN>();
-        
-        BSTN root = getRoot();
-        next.add(root);
-        while (!next.isEmpty()) {
-            curr = next;
-            lists.add(curr);
-            next = new LinkedList<BSTN>();
-            for (int i = 0; i < curr.size(); i++) {
-                if (curr.get(i).left != null) {
-                    next.add(curr.get(i).left);
+
+    public void print() {
+        LinkedList<LinkedList<BSTN>> q = new LinkedList<LinkedList<BSTN>>();
+
+        q.add(new LinkedList<BSTN>());
+        q.get(0).add(root);
+        int idx = 0;
+        while (!q.get(idx).isEmpty()) {
+            q.add(new LinkedList<BSTN>());
+            System.out.println(Arrays.toString(q.get(idx).toArray()));
+            for (Iterator<BSTN> iterator = q.get(idx).iterator(); iterator.hasNext();) {
+                BSTN p = iterator.next();
+                if (p.left != null) {
+                    q.get(idx + 1).add(p.left);
                 }
-                if (curr.get(i).right != null) {
-                    next.add(curr.get(i).right);
+                if (p.right != null) {
+                    q.get(idx + 1).add(p.right);
                 }
             }
+            idx++;
         }
-        
-        return lists;
+        System.out.println("\nlvls counted: " + idx);
     }
-    
 
     public boolean delete(int id) {
         BSTN par = root;
@@ -306,18 +303,22 @@ public class BSTTree {
         for (int i = 0; i < a.length; i++) {
             a[i] = i;
         }
+
         t.createBST(a);
-        printLists(t);
-        t.delete(8);
-        printLists(t);
-        t.delete(7);
-        printLists(t);
+        t.print();
+        // printLists(t);
+        // t.delete(8);
+        // printLists(t);
+        // t.delete(7);
+        // printLists(t);
+
+        // t.printSideways();
     }
 
-    private static void printLists(BSTTree t) {
-        for (LinkedList<BSTN> l : t.getLists()) {
-            BSTN[] array = l.toArray(new BSTN[l.size()]);
-            System.out.println(Arrays.toString(array));
-        }
-    }
+    // private static void printLists(BSTTree t) {
+    // for (LinkedList<BSTN> l : t.getLists()) {
+    // BSTN[] array = l.toArray(new BSTN[l.size()]);
+    // System.out.println(Arrays.toString(array));
+    // }
+    // }
 }
