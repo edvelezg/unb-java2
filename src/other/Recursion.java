@@ -1,7 +1,5 @@
 package other;
 
-import java.util.logging.Level;
-
 public class Recursion {
 
     public static void main(String[] args) {

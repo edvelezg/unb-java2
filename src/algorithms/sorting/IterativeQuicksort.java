@@ -1,7 +1,5 @@
 package algorithms.sorting;
 
-import java.util.Arrays;
-
 //Java implementation of iterative quick sort
 class IterativeQuickSort {
     void swap(int arr[], int i, int j) {
