@@ -1,7 +1,5 @@
 package data.structures;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 public class ArrayList<T> {
 	private T[] elementData;
@@ -143,45 +141,6 @@ public class ArrayList<T> {
 
 	public void clear() {
 		size = 0;
-	}
-
-	private class ArrayListIterator implements Iterator<T> {
-		private int pos;
-		private boolean removeOK;
-		
-		public ArrayListIterator(ArrayList list) {
-			pos = 0;
-			removeOK = false;
-		}
-
-		public boolean hasNext() {
-			return pos < size();
-		}
-
-		public T next() {
-			if (!hasNext()) {
-				throw new NoSuchElementException();
-			}
-			
-			@SuppressWarnings("unchecked")
-			T val = (T) get(pos);
-			pos++;
-			removeOK = true;
-			return val; 
-			
-		}
-
-		public void remove() {
-			if (!removeOK) {
-				throw new IllegalStateException();
-			}
-			
-			ArrayList.this.remove(pos-1);
-			pos--;
-			removeOK = false;
-		}
-		
-
 	}
 
 

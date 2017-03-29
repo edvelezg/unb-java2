@@ -31,7 +31,7 @@ public class MySet {
         }
         
         Random rand = new Random();
-        int idx = Math.abs(rand.nextInt()) % set.size();
+        int idx = rand.nextInt(Integer.MAX_VALUE) % set.size();
         System.out.println(idx);
         Integer[] array = set.toArray(new Integer[set.size()]);
         return array[idx];

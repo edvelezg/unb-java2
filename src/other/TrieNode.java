@@ -32,7 +32,7 @@ public class TrieNode {
     }
 
     protected void insert(String word) {
-        System.out.println(this.c + ".insert(" + word + ")");
+//        System.out.println(this.c + ".insert(" + word + ")");
         int val = word.charAt(0) - 64;
 
         // if the value of the child node at val is null, make a new node

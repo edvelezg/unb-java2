@@ -115,7 +115,7 @@ public class Node<T> {
 
     @Override
     public boolean equals(Object obj) {
-        if (null == obj)
+        if (obj == null)
             return false;
 
         if (obj instanceof Node) {

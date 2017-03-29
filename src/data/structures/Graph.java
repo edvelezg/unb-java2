@@ -93,6 +93,7 @@ public class Graph {
         }
     }
 
+    @SuppressWarnings("unused")
     private static void print(GraphNode root, int x) {
         if (root.val == x) {
             System.out.println(root + "<- found");

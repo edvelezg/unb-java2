@@ -67,7 +67,7 @@ public class IntTree {
         overallRoot = createBST(array, 0, array.length - 1);
         return overallRoot;
     }
-    
+
     public IntTreeNode createBST(int[] array, int start, int end) {
         if (end < start) {
             return null;
@@ -125,7 +125,7 @@ public class IntTree {
         printPreorder(getOverallRoot());
         System.out.println();
     }
-    
+
     // post: prints the tree contents using a preorder traversal
     // post: prints in preorder the tree with given root
     private void printPreorder(IntTreeNode root) {
@@ -167,7 +167,7 @@ public class IntTree {
             System.out.print(" " + root.data);
         }
     }
-    
+
     // post: prints in postorder the tree with given root
     public void BFS() {
         IntTreeNode root = getOverallRoot();
@@ -183,16 +183,15 @@ public class IntTree {
             }
         }
     }
-    
+
     public void BFS2() {
         IntTreeNode root = getOverallRoot();
         Queue<IntTreeNode> curr = new ArrayDeque<IntTreeNode>();
         Queue<IntTreeNode> next = new ArrayDeque<IntTreeNode>();
         next.add(root);
         while (!next.isEmpty()) {
-        	if (curr.isEmpty()) {
-				
-			}
+            if (curr.isEmpty()) {
+            }
             IntTreeNode node = next.remove();
             if (node.right != null) {
                 next.add(node.right);
@@ -202,7 +201,6 @@ public class IntTree {
             }
         }
     }
-
 
     public int sum() {
         return sum(getOverallRoot());
@@ -381,16 +379,16 @@ public class IntTree {
     public static void main(String[] args) {
 
         IntTree t = new IntTree();
-        int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+        int[] array = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
         t.createBST(array);
-//        t.printPreorder();
+        // t.printPreorder();
 
-//        t.sumNodes(t.getOverallRoot(), 0);
+        // t.sumNodes(t.getOverallRoot(), 0);
         t.BFS();
-//        System.out.println(t.sum());
-//        System.out.println(t.countLevels());
-//        System.out.println(t.countLeaves());
-//        t.inOrderNORecursion();
+        // System.out.println(t.sum());
+        // System.out.println(t.countLevels());
+        // System.out.println(t.countLeaves());
+        // t.inOrderNORecursion();
 
         // t.printBoundary();
         // System.out.println();

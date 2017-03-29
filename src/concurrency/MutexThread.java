@@ -1,5 +1,7 @@
 package concurrency;
 
+import java.util.Random;
+
 public class MutexThread extends Thread {
 	private Semaphore mutex;
 
@@ -15,10 +17,13 @@ public class MutexThread extends Thread {
 			mutex.down();
 			System.out.println("Enter critical section" + getName());
 			try {
-				sleep ((int) Math.random() * 100); 
-			} catch (Exception e) {}
-			System.out.println("Leave critical section" + getName());
-			mutex.up();
+			    Random rand = new Random();
+				sleep ((int) rand.nextInt() * 100); 
+			} catch (Exception e) {
+			} finally {
+    			System.out.println("Leave critical section" + getName());
+    			mutex.up();
+			}
 		}
 	}
 }
