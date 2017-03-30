@@ -1,4 +1,4 @@
-package google.interview;
+package math.problems;
 
 public class SumMultsBelow1000 {
     

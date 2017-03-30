@@ -1,4 +1,5 @@
 package com.interview.dynamic;
+import java.util.Arrays;
 
 /**
  * Problem Statement:
@@ -15,19 +16,23 @@ package com.interview.dynamic;
 public class MaximumSumSubsequence {
 
     public int maxSum(int arr[]){
+        System.out.println("maxSum(arr="+arr+")");
         int T[] = new int[arr.length];
 
         for (int i = 0; i < T.length; i++) {
             T[i] = arr[i];
         }
+        System.out.println("T:" + Arrays.toString(T));
 
         for(int i=1; i < T.length; i++){
             for(int j = 0; j < i; j++){
                 if(arr[j] < arr[i]){
                     T[i] = Math.max(T[i], T[j] + arr[i]);
+                    System.out.println("T:" + Arrays.toString(T));
                 }
             }
         }
+        System.out.println("T:" + Arrays.toString(T));
 
         int max = T[0];
         for (int i=1; i < T.length; i++){

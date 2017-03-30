@@ -1,4 +1,7 @@
 package com.interview.dynamic;
+
+import java.util.Arrays;
+
 /*
  * Date 09/23/2014
  * @author Tushar Roy
@@ -15,6 +18,7 @@ package com.interview.dynamic;
 public class SubsetSum {
 
     public boolean subsetSum(int input[], int total) {
+        System.out.println("subsetSum(input="+Arrays.toString(input)+", total="+total+")");
 
         boolean T[][] = new boolean[input.length + 1][total + 1];
         for (int i = 0; i <= input.length; i++) {
@@ -64,10 +68,10 @@ public class SubsetSum {
 
     public static void main(String args[]) {
         SubsetSum ss = new SubsetSum();
-        int arr[] = {1, 3, 5, 5, 2, 1, 1, 6};
-        System.out.println(ss.partition(arr));
+//        int arr[] = {1, 3, 5, 5, 2, 1, 1, 6};
+//        System.out.println(ss.partition(arr));
 
-        int arr1[] = {2, 3, 7, 8};
+        int arr1[] = {2, 3, 7, 8, -5, 2, 3, -5, 1, };
         System.out.print(ss.subsetSum(arr1, 11));
 
     }

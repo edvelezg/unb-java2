@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Quicksort {
 
     public static void main(String args[]) {
-        Integer[] array = new Integer[] { 5, 1, 4, 7 }; //, 9, 2, 8 };
+        Integer[] array = new Integer[] { 5, 1, 4, 7, 9, 2, 8, 3, 6};
         sort(array);
     }
     
@@ -31,7 +31,7 @@ public class Quicksort {
     }
 
     private static <T extends Comparable<T>> int splitList(T[] list, int lo, int hi) {
-        System.out.println("splitList(list=" + Arrays.toString(list)+" lo="+lo+" hi="+hi+") pivot: " + list[lo]);
+//        System.out.println("splitList(list=" + Arrays.toString(list)+" lo="+lo+" hi="+hi+") pivot: " + list[lo]);
         T pivot = list[lo]; 
         int left = lo + 1;
         int right = hi;
@@ -64,7 +64,7 @@ public class Quicksort {
     }
 
     private static <T extends Comparable<T>> void swap(T[] list, int left, int right) {
-        System.out.println("SWAP (list="+ Arrays.toString(list)+" left="+left+" right="+right+")");
+//        System.out.println("SWAP (list="+ Arrays.toString(list)+" left="+left+" right="+right+")");
         if (left != right) {
             T temp = list[left];
             list[left] = list[right];
@@ -74,7 +74,7 @@ public class Quicksort {
 
 
     private static <T extends Comparable<T>> void sort(T[] list, int lo, int hi) {
-        System.out.println("sort(list="+ Arrays.toString(list)+" lo="+lo+" hi="+hi+")");
+//        System.out.println("sort(list="+ Arrays.toString(list)+" lo="+lo+" hi="+hi+")");
         // base case:
         if (hi - lo <= 0) {
             return;
