@@ -89,8 +89,7 @@ public class Knapsack01 {
         return topDownRecursiveUtil(values, weights, W, values.length, 0, map);
     }
 
-    public int topDownRecursiveUtil(int values[], int weights[], int remainingWeight, int totalItems, int currentItem,
-            Map<Index, Integer> map) {
+    public int topDownRecursiveUtil(int values[], int weights[], int remainingWeight, int totalItems, int currentItem, Map<Index, Integer> map) {
         // if currentItem exceeds total item count or remainingWeight is less
         // than 0 then
         // just return with 0;
