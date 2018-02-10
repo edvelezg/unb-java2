@@ -16,7 +16,6 @@ import java.util.Arrays;
 public class MaximumSumSubsequence {
 
     public int maxSum(int arr[]){
-        System.out.println("maxSum(arr="+arr+")");
         int T[] = new int[arr.length];
 
         for (int i = 0; i < T.length; i++) {
@@ -28,7 +27,6 @@ public class MaximumSumSubsequence {
             for(int j = 0; j < i; j++){
                 if(arr[j] < arr[i]){
                     T[i] = Math.max(T[i], T[j] + arr[i]);
-                    System.out.println("T:" + Arrays.toString(T));
                 }
             }
         }

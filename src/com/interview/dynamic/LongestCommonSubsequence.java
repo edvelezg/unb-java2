@@ -21,6 +21,7 @@ public class LongestCommonSubsequence {
     public int lcsDynamic(char str1[], char str2[]) {
 
         int temp[][] = new int[str1.length + 1][str2.length + 1];
+        printMtx(temp);
         int max = 0;
         for (int i = 1; i < temp.length; i++) {
             for (int j = 1; j < temp[i].length; j++) {
@@ -34,15 +35,26 @@ public class LongestCommonSubsequence {
                 }
             }
         }
+        printMtx(temp);
         return max;
 
     }
 
-    public static void main(String args[]){
+    public static void printMtx(int T[][]) {
+        for (int row = 0; row < T.length; row++) {
+            for (int column = 0; column < T[row].length; column++) {
+                System.out.print(T[row][column] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void main(String args[]) {
         LongestCommonSubsequence lcs = new LongestCommonSubsequence();
-        String str1 = "ABCDGHLQR";
-        String str2 = "AEDPHR";
-        
+        String str1 = "ABCDAF";
+        String str2 = "ACBCF";
+
         int result = lcs.lcsDynamic(str1.toCharArray(), str2.toCharArray());
         System.out.print(result);
     }
