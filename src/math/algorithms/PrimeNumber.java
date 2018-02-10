@@ -1,4 +1,4 @@
-package algorithms;
+package math.algorithms;
 
 import java.math.BigInteger;
 
