@@ -27,8 +27,8 @@ public class SubsetSum {
 
         for (int i = 1; i <= input.length; i++) {
             for (int j = 1; j <= total; j++) {
-                if (j - input[i - 1] >= 0) {
-                    T[i][j] = T[i - 1][j] || T[i - 1][j - input[i - 1]];
+                if (j - input[i-1] >= 0) {
+                    T[i][j] = T[i-1][j] || T[i-1][j - input[i-1]];
                 } else {
                     T[i][j] = T[i-1][j];
                 }
@@ -56,8 +56,8 @@ public class SubsetSum {
 
         for (int i = 1; i <= arr.length; i++) {
             for (int j = 1; j <= sum; j++) {
-                if (j - arr[i - 1] >= 0) {
-                    T[i][j] = T[i - 1][j - arr[i - 1]] || T[i - 1][j];
+                if (j - arr[i-1] >= 0) {
+                    T[i][j] = T[i-1][j - arr[i-1]] || T[i-1][j];
                 } else {
                     T[i][j] = T[i-1][j];
                 }
