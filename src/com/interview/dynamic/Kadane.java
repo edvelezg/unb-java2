@@ -1,34 +1,31 @@
 package com.interview.dynamic;
 
-public class Kadane {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+class Sequence {
+	ArrayList<Integer> numList = new ArrayList<>();
+	int start_idx;
+	int ending_idx;
 	
-	public static void printMtx() {
-		
+	public Sequence() {
+
 	}
 	
-	public static void main(String[] args) {
-		String str1 = "team";
-		String str2 = "tea";
+	@Override
+	public String toString() {
+		return String.format("\t%-5d, %-5d, %s\n", start_idx, ending_idx, Arrays.toString(numList.toArray()) );
+	}
+}
+
+public class Kadane {
 	
-		int[][] T = new int[str1.length()+1][str2.length()+1];
-		
-		for (int i = 0; i < T.length; i++) {
-			T[i][0] = i;
-		}
-
-		for (int j = 0; j < T.length; j++) {
-			T[0][j] = j;
-		}
-
-		for (int i = 1; i < str1.length(); i++) {
-			for (int j = 1; j < str2.length(); j++) {
-				if (str1.charAt(i) == str2.charAt(j)) {
-					T[i][j] = T[i-1][j-1];
-				} else {
-					T[i][j] = Math.min(Math.min(T[i-1][j-1], T[i-1][j]), T[i][j-1]) + 1; 
-				}
-			}
-		}
+	public static void main(String[] args) {
+//		int maxSum = maxContSum(new int [] { -7, -6, 1, 2, -4, 3 ,-2, 1, 2, 4});
+//		int maxSum = maxContSum(new int [] { -7, -6, 1, 2, -4, 3 ,-2, 1 });
+		int maxSum = maxContSum(new int [] { 1, 2, -4, 3 ,-2, -1, 1, 2, -4, -1, 2, -1, 2 });
+		System.out.println("maxSum:" + maxSum);
 	}
 	
 	public static int min(int a, int b, int c) {
@@ -38,6 +35,7 @@ public class Kadane {
 
 	public static int maxContSum(int a[]) {
 		int size = a.length;
+		int[] rm_array = new int[size]; // array to collect all relative maximums
 		int am = Integer.MIN_VALUE, rm = 0;
 
 		for (int i = 0; i < size; i++) {
@@ -46,7 +44,35 @@ public class Kadane {
 				am = rm;
 			if (rm < 0)
 				rm = 0;
+			
+			rm_array[i] = rm;
 		}
+		findMaxSums(rm_array, am, a);
 		return am;
+	}
+	
+	public static int findMaxSums(int rm_array[], int am, int[] a) {
+		ArrayList<Sequence> seqs = new ArrayList<>();
+		for (int i = rm_array.length - 1; i >= 0; i--) {
+			if (rm_array[i] == am) {
+				Sequence sequence = new Sequence();
+				int sum = am;
+				int j;
+				for (j = i; j >= 0 && sum > 0; --j) {
+					sequence.ending_idx = i;
+					sum -= a[j];
+					sequence.numList.add(a[j]);
+				}
+				sequence.start_idx = j + 1;
+				Collections.reverse(sequence.numList);
+				System.out.println(Arrays.toString(sequence.numList.toArray())); 
+				seqs.add(sequence);
+//				i = j; // This will stop sequences from showing up  
+			}
+		}
+		Collections.reverse(seqs);
+		System.out.println(String.format("total seqs: %d", seqs.size()));
+		System.out.println(seqs);
+		return 0;
 	}
 }
