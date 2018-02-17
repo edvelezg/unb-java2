@@ -1,33 +1,43 @@
 package google.interview;
 
+import java.util.Arrays;
+
 public class HasPathsClass {
 
-	private static int[][] mtrx = {
-			{ 0, 1, 0, 0, 0 },
-			{ 1, 1, 0, 1, 0 },
-			{ 1, 0, 1, 1, 1 },
-			{ 1, 1, 1, 0, 1 },
-			{ 0, 0, 0, 0, 1 }
-			};
+   private static int[][] mtrx = {
+            { 0, 1, 0, 0, 0, 0 },
+            { 1, 1, 0, 1, 0, 1 },
+            { 1, 0, 0, 1, 1, 0 },
+            { 1, 0, 1, 0, 1, 0 },
+            { 1, 1, 1, 0, 1, 0 },
+            { 1, 0, 0, 1, 1, 1 },
+            { 1, 1, 1, 1, 0, 1 },
+            { 0, 0, 0, 0, 0, 1 }
+            };
 
 	private static int[][] visited = {
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 }
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 }
             };
 
     public static boolean hasPath(int[][] mtx, int row, int numrows, int col, int numcols) {
         System.out.println("hasPath(r=" + row + ", c=" + col + ", n=" + numcols + ")");
-        if (row > numrows - 1 || col > numcols - 1)
+        if (row > numrows - 1 || col > numcols - 1 || row < 0 || col < 0)
             return false;
 
         if (mtx[row][col] == 0)
             return false;
 
-        if (row == numrows - 1)
+        if (row == numrows - 1) {
+        	visited[row][col] = 1;
             return (mtrx[row][col] == 1);
+        }
 
         if (visited[row][col] == 1)
             return false;
@@ -50,5 +60,10 @@ public class HasPathsClass {
 //                break;
             }
         }
+        
+        
+        for (int i = 0; i < visited.length; i++) {
+			System.out.println(Arrays.toString(visited[i]));
+		}
     }
 }

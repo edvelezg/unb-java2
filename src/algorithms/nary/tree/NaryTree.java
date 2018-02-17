@@ -89,13 +89,23 @@ public class NaryTree<T> {
         return getNumberOfDescendants(root) + 1;
     }
     
-    private int getHeight(Node<T> node) {
+    private int getHeight(Node<T> node) {   	
     	// I don't think this code is right.
         int n = node.getChildren().size();
-        for (Node<T> child : node.getChildren()) {
-            n += getHeight(child);
+        if (n == 0) {
+        	return 0;
         }
-        return n;
+        ArrayList<Integer> heights = new ArrayList<>(); 
+        for (Node<T> child : node.getChildren()) {
+            heights.add(1 + getHeight(child));
+        }
+        
+        int maxHeight = heights.get(0);
+        for (int i = 1; i < heights.size(); i++) {
+			maxHeight = Math.max(heights.get(i), maxHeight);
+		}
+        
+        return maxHeight;
     }
     
 	private void printSideways() {

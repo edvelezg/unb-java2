@@ -1,1 +1,7 @@
 /bin/
+*.class
+*.vpwhist
+*.vtg
+*.vpb
+/.metadata/
+*.vpwhist
