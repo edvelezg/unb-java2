@@ -36,8 +36,10 @@ public class Node<T> {
      * @param child child node
      */
     public void addChild(Node<T> child) {
-        child.setParent(this);
-        children.add(child);
+    	if (child != null) {
+            child.setParent(this);
+            children.add(child);
+		}
     }
 
     /**
