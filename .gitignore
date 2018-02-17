@@ -3,3 +3,5 @@
 *.vpwhist
 *.vtg
 *.vpb
+/.metadata/
+*.vpwhist

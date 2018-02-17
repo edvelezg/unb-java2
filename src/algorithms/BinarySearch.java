@@ -7,7 +7,7 @@ public class BinarySearch {
         int l = 0;
         while (l <= h)
         {
-            int m = (l + h)/2;
+            int m = l + (h - l)/2;
             if (x == a[m]) {
                 return m;
             } else if (x < a[m]) {

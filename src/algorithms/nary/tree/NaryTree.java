@@ -48,12 +48,22 @@ public class NaryTree<T> {
         return getNumberOfDescendants(root) + 1;
     }
     
-    private int getHeight(Node<T> node) {
+    private int getHeight(Node<T> node) {   	
         int n = node.getChildren().size();
-        for (Node<T> child : node.getChildren()) {
-            n += getHeight(child);
+        if (n == 0) {
+        	return 0;
         }
-        return n;
+        ArrayList<Integer> heights = new ArrayList<>(); 
+        for (Node<T> child : node.getChildren()) {
+            heights.add(1 + getHeight(child));
+        }
+        
+        int maxHeight = heights.get(0);
+        for (int i = 1; i < heights.size(); i++) {
+			maxHeight = Math.max(heights.get(i), maxHeight);
+		}
+        
+        return maxHeight;
     }
 
 
@@ -92,7 +102,11 @@ public class NaryTree<T> {
         root.addChild(child2);
         child2.addChild(new Node<Integer>(7));
         child2.addChild(new Node<Integer>(8));
-        child2.addChild(new Node<Integer>(9));
+        
+        Node<Integer> child3 = new Node<Integer>(9);
+        child2.addChild(child3);
+        
+        child3.addChild(new Node<Integer>(10)).addChild(new Node<Integer>(11));
 
         // Create a tree, providing the root node
         NaryTree<Integer> tree = new NaryTree<Integer>(root);
@@ -100,10 +114,14 @@ public class NaryTree<T> {
         // Get the pre-order traversal
         System.out.println("num elems: " + tree.size());
         System.out.println("num elems: " + tree.getNumberOfDescendants(root));
-        tree.getHeight(root);
+        int height = tree.getHeight(root);
+        System.out.println("height=" + height);
         
-        boolean res = tree.find(root, 6);
-        System.out.println(res);
+        int descendants = tree.getNumberOfDescendants(child3);
+        System.out.println("descendants="+descendants);
+        
+//        boolean res = tree.find(root, 6);
+//        System.out.println(res);
         
     }
 }

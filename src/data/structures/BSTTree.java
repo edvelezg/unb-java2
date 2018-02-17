@@ -121,6 +121,10 @@ public class BSTTree {
 		return true;
 	}
 
+	public BSTN find(int val) {
+		return find(getRoot(), val);
+	}
+
 	public BSTN find(BSTN root, int val) {
 		BSTN cur = root;
 		while (cur != null) {
@@ -133,6 +137,44 @@ public class BSTTree {
 			}
 		}
 		return null;
+	}
+
+	public int distFind(BSTN root, int val) {
+		BSTN cur = root;
+		int dist = 0;
+		while (cur != null) {
+			if (cur.val == val) {
+				return dist;
+			} else if (cur.val > val) {
+				cur = cur.left;
+			} else {
+				cur = cur.right;
+			}
+			dist += 1;
+		}
+		return -1;
+	}
+
+	public int minDistance(int v1, int v2) {
+
+		BSTN lca = getRoot();
+		while (true) {
+			if (v1 < lca.val && v2 < lca.val) {
+				lca = lca.left;
+			} else if (v1 > lca.val && v2 > lca.val) {
+				lca = lca.right;
+			} else {
+				break;
+			}
+		}
+
+		System.out.println("The common ancestor is " + lca.val);
+
+		int dist = distFind(lca, v1);
+		dist += distFind(lca, v2);
+
+		System.out.println(String.format("The min distance between %d and %d is %d", v1, v2, dist));
+		return dist;
 	}
 
 	public BSTN recursiveFind(BSTN root, int val) {
@@ -231,7 +273,7 @@ public class BSTTree {
 				return false;
 			}
 		}
-		// if i am here that means we have found the node
+		// if I am here that means we have found the node
 		// Case 1: if node to be deleted has no children
 		if (cur.left == null && cur.right == null) {
 			if (cur == root) {
@@ -285,11 +327,9 @@ public class BSTTree {
 			successsor = current;
 			current = current.left;
 		}
-		// check if successor has the right child, it cannot have left child for
-		// sure
-		// if it does have the right child, add it to the left of
+		// Check if successor has the right child, it cannot have left child for
+		// sure if it does have the right child, add it to the left of
 		// successorParent.
-		// successsorParent
 		if (successsor != cur.right) {
 			successsorParent.left = successsor.right;
 			successsor.right = cur.right;
@@ -297,12 +337,12 @@ public class BSTTree {
 		return successsor;
 	}
 
-	BSTN findLowestCommonAncestor(BSTN root, int value1, int value2) {
+	BSTN lowestCommonAncestor(BSTN root, int val1, int val2) {
 		while (root != null) {
-			int value = root.val;
-			if (value > value1 && value > value2) {
+			int val = root.val;
+			if (val1 < val && val2 < val) {
 				root = root.left;
-			} else if (value < value1 && value < value2) {
+			} else if (val1 > val && val2 > val) {
 				root = root.right;
 			} else {
 				return root;
@@ -311,33 +351,21 @@ public class BSTTree {
 		return null; // only if empty tree
 	}
 
-	public static int distance(int[] a, int n1, int n2) {
-
+	public static void main(String[] args) {
 		BSTTree t = new BSTTree();
+		int[] a = new int[15];
 		for (int i = 0; i < a.length; i++) {
-			t.add(a[i]);
+			a[i] = i;
 		}
 
+		t.createBST(a);
 		t.printSideways();
-		System.out.println("root: " + t.getRoot());
-		BSTN lca = t.findLowestCommonAncestor(t.getRoot(), n1, n2);
-		System.out.println("the lca is: " + ((lca == null) ? "NULL" : lca.val));
-
-		return -1;
-
-	}
-
-	public static void main(String[] args) {
-//		BSTTree t = new BSTTree();
-//		int[] a = new int[15];
-//		for (int i = 0; i < a.length; i++) {
-//			a[i] = i;
-//		}
-//
-//		t.createBST(a);
-//		t.print();
-
-		BSTTree.distance(new int[] {7, 3, 1, 5, 4, 6, 0, 2, 11, 9, 13, 8, 10 }, 2, 4);
+		t.minDistance(0, 2);
+		t.minDistance(0, 7);
+		t.minDistance(0, 14);
+		t.minDistance(7, 7);
+		t.minDistance(3, 6);
+		t.minDistance(8, 6);
 		// printLists(t);
 		// t.delete(8);
 		// printLists(t);
