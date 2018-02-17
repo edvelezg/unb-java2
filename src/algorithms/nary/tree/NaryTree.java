@@ -89,11 +89,15 @@ public class NaryTree<T> {
         return getNumberOfDescendants(root) + 1;
     }
     
+    public int getHeight() {   	
+    	return getHeight(getRoot());
+    }
+    
     private int getHeight(Node<T> node) {   	
     	// I don't think this code is right.
         int n = node.getChildren().size();
         if (n == 0) {
-        	return 0;
+        	return 1;
         }
         ArrayList<Integer> heights = new ArrayList<>(); 
         for (Node<T> child : node.getChildren()) {
@@ -136,6 +140,10 @@ public class NaryTree<T> {
         }
         return n;
     }
+    
+    private int getNumberOfDescendants() {
+    	return getNumberOfDescendants(getRoot());
+    }
 
     public ArrayList<Node<T>> getPreOrderTraversal() {
         ArrayList<Node<T>> preOrder = new ArrayList<Node<T>>();
@@ -153,7 +161,9 @@ public class NaryTree<T> {
     
     public static void main(String[] args) {
      // Create a new Integer type node
+    	
         Node<Integer> root = new Node<Integer>(1);
+        NaryTree<Integer> myT = new NaryTree<>(root);
         // Add a child
         Node<Integer> child = new Node<Integer>(2);
         root.addChild(child);
@@ -170,20 +180,23 @@ public class NaryTree<T> {
         
         child3.addChild(new Node<Integer>(10)).addChild(new Node<Integer>(11));
 
+        myT.printSideways();
+        
+        int descendants = child2.getNumberOfDescendants();   
+        System.out.println("descendants = " + descendants);    
+        System.out.println("height = " + myT.getHeight());    
+
+        
+        // Create a tree, providing the root node
+        NaryTree<Integer> tree = new NaryTree<Integer>();
+        Integer[] array = new Integer[] {0,1,2,3,4,5,6}; 
+        tree.createBST(array);
+
         System.out.println("num elems: " + tree.size());
         System.out.println("num elems: " + tree.getNumberOfDescendants(root));
         int height = tree.getHeight(root);
         System.out.println("height=" + height);
         
-        int descendants = tree.getNumberOfDescendants(child3);
-        System.out.println("descendants="+descendants);
-
-        // Create a tree, providing the root node
-        NaryTree<Integer> tree = new NaryTree<Integer>();
-        
-        Integer[] array = new Integer[] {0,1,2,3,4,5,6,7,8}; 
-        tree.createBST(array);
-
 //        tree.getPreOrderTraversal();
         tree.printSideways();
         // Get the pre-order traversal

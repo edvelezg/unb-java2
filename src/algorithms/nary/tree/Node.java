@@ -37,8 +37,10 @@ public class Node<T> {
      */
 
     public Node<T> addChild(Node<T> child) {
-        child.setParent(this);
-        children.add(child);
+    	if (child != null) {
+            child.setParent(this);
+            children.add(child);
+		}
         return child;
     }
     
@@ -126,6 +128,22 @@ public class Node<T> {
         }
 
         return false;
+    }
+    
+    public int getNumberOfDescendants() {
+        int n = this.getChildren().size();
+        for (Node<T> child : this.getChildren()) {
+            n += getNumberOfDescendants(child);
+        }
+        return n;
+    }
+    
+    private int getNumberOfDescendants(Node<T> node) {
+        int n = node.getChildren().size();
+        for (Node<T> child : node.getChildren()) {
+            n += getNumberOfDescendants(child);
+        }
+        return n;
     }
 
     @Override
