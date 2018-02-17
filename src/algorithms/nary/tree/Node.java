@@ -35,18 +35,11 @@ public class Node<T> {
      *
      * @param child child node
      */
-<<<<<<< HEAD
-    public void addChild(Node<T> child) {
-    	if (child != null) {
-            child.setParent(this);
-            children.add(child);
-		}
-=======
+
     public Node<T> addChild(Node<T> child) {
         child.setParent(this);
         children.add(child);
         return child;
->>>>>>> branch 'master' of https://github.com/edvelezg/unb-java2
     }
     
     /**

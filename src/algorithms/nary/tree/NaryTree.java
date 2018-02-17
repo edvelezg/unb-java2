@@ -153,18 +153,30 @@ public class NaryTree<T> {
     
     public static void main(String[] args) {
      // Create a new Integer type node
-//        Node<Integer> root = new Node<Integer>(1);
-//        // Add a child
-//        Node<Integer> child = new Node<Integer>(2);
-//        root.addChild(child);
-//        root.addChild(new Node<Integer>(3));
-//        child.addChild(new Node<Integer>(5));
-//        child.addChild(new Node<Integer>(6));
-//        Node<Integer> child2 = new Node<Integer>(4);
-//        root.addChild(child2);
-//        child2.addChild(new Node<Integer>(7));
-//        child2.addChild(new Node<Integer>(8));
-//        child2.addChild(new Node<Integer>(9));
+        Node<Integer> root = new Node<Integer>(1);
+        // Add a child
+        Node<Integer> child = new Node<Integer>(2);
+        root.addChild(child);
+        root.addChild(new Node<Integer>(3));
+        child.addChild(new Node<Integer>(5));
+        child.addChild(new Node<Integer>(6));
+        Node<Integer> child2 = new Node<Integer>(4);
+        root.addChild(child2);
+        child2.addChild(new Node<Integer>(7));
+        child2.addChild(new Node<Integer>(8));
+        
+        Node<Integer> child3 = new Node<Integer>(9);
+        child2.addChild(child3);
+        
+        child3.addChild(new Node<Integer>(10)).addChild(new Node<Integer>(11));
+
+        System.out.println("num elems: " + tree.size());
+        System.out.println("num elems: " + tree.getNumberOfDescendants(root));
+        int height = tree.getHeight(root);
+        System.out.println("height=" + height);
+        
+        int descendants = tree.getNumberOfDescendants(child3);
+        System.out.println("descendants="+descendants);
 
         // Create a tree, providing the root node
         NaryTree<Integer> tree = new NaryTree<Integer>();
