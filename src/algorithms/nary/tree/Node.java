@@ -35,11 +35,12 @@ public class Node<T> {
      *
      * @param child child node
      */
-    public void addChild(Node<T> child) {
+    public Node<T> addChild(Node<T> child) {
         child.setParent(this);
         children.add(child);
+        return child;
     }
-
+    
     /**
      *
      * Add a child node at the given index.
