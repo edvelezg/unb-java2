@@ -15,7 +15,7 @@ public class HasPathsClass {
             { 0, 0, 0, 0, 0, 1 }
             };
 
-	private static int[][] visited = {
+	private static int[][] wasHere = {
             { 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0 },
@@ -35,15 +35,15 @@ public class HasPathsClass {
             return false;
 
         if (row == numrows - 1) {
-        	visited[row][col] = 1;
+        	wasHere[row][col] = 1;
             return (mtrx[row][col] == 1);
         }
 
-        if (visited[row][col] == 1)
+        if (wasHere[row][col] == 1)
             return false;
 
         boolean hasP = (mtx[row][col] == 1);
-        visited[row][col] = 1;
+        wasHere[row][col] = 1;
         return hasP && (hasPath(mtx, row, numrows, col + 1, numcols) || hasPath(mtx, row + 1, numrows, col, numcols)
                 || hasPath(mtx, row, numrows, col - 1, numcols) || hasPath(mtx, row - 1 , numrows, col, numcols));
     }
@@ -62,8 +62,8 @@ public class HasPathsClass {
         }
         
         
-        for (int i = 0; i < visited.length; i++) {
-			System.out.println(Arrays.toString(visited[i]));
+        for (int i = 0; i < wasHere.length; i++) {
+			System.out.println(Arrays.toString(wasHere[i]));
 		}
     }
 }
