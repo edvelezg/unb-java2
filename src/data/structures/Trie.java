@@ -35,9 +35,12 @@ public class Trie {
 
 	private final TrieNode root;
 	private static StringBuffer bf;
+	private static ArrayList<String> list;
 
 	public Trie() {
 		root = new TrieNode('#');
+		bf = new StringBuffer();
+		list = new ArrayList<>();
 	}
 
 	/**
@@ -208,30 +211,60 @@ public class Trie {
 	public static void getWords(TrieNode node, String pref) {
 		if (node.endOfWord) {
 			System.out.println(bf.toString());
+			list.add(bf.toString());
 		}
 		Set<Character> keySet = node.children.keySet();
-//		System.out.print("Heli");
 		for (Character ch : keySet) {
 			bf.append(ch);
 			TrieNode trieNode = node.children.get(ch);
 			getWords(trieNode, pref);
 			bf.setLength(bf.length()-1);
 		}
-//		bf = new StringBuffer(pref);
 	}
+	
+	public ArrayList<String> findPrefixWithArray(String pref) {
+		// clear the buffer
+		bf.delete(0, bf.length());
+		
+		TrieNode node = searchPrefix(pref);
+		bf.append(pref);
+		return getWordsForPref(node, pref, new ArrayList<String>());
+	}
+	
+	public static ArrayList<String> getWordsForPref(TrieNode node, String pref, ArrayList<String> list) {
+		if (node.endOfWord) {
+			System.out.println(bf.toString());
+			list.add(bf.toString());
+		}
+		Set<Character> keySet = node.children.keySet();
+		for (Character ch : keySet) {
+			bf.append(ch);
+			TrieNode trieNode = node.children.get(ch);
+			getWordsForPref(trieNode, pref, list);
+			bf.setLength(bf.length()-1);
+		}
+		return list;
+	}
+
 
 	public static void main(String[] args) {
 		Trie t = new Trie();
 		t.insert("Hello");
 		t.insert("Helm");
+		t.insert("Helmet");
 		t.insert("Helios");
-		t.insert("Helior");
+		t.insert("Helix");
+		t.insert("Heliocentric");
+		t.insert("Absent");
+		t.insert("Abscess");
+		t.insert("Abscond");
 
 		t.search("Helm");
 		t.search("Helios");
 		t.search("Help");
 		
-		t.findPrefix("Hel");
-
+//		t.findPrefix("Heli");
+		System.out.println(t.findPrefixWithArray("Heli"));
+		System.out.println(t.findPrefixWithArray("Ab"));
 	}
 }
