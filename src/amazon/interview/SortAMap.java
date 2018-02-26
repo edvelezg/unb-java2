@@ -1,5 +1,6 @@
 package amazon.interview;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,6 +42,8 @@ public class SortAMap {
 //		Collections.sort((List<T>) unsortedMap);
 //		Entry<String, Integer> entry = new Entry<String, Integer>("apple", 20);
 //		list.add(  );
-				
+		
+        ArrayList<Integer> counts = new ArrayList<>(5);
+        
 	}
 }
