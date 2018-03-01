@@ -6,7 +6,7 @@ import java.math.BigInteger;
  * @author egutarra
  *
  */
-public class PrimeNumber {
+public class SquareRoot {
 
     private static BigInteger two = new BigInteger("2");
 
