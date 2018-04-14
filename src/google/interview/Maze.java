@@ -29,17 +29,26 @@ class Cell<R, C> {
 
 public class Maze {
 	
-	private static int[][] maze = {
-            { 0, 1, 0, 0, 0, 0 },
-            { 1, 1, 0, 1, 0, 1 },
-            { 1, 0, 0, 1, 1, 0 },
-            { 1, 0, 1, 0, 1, 0 },
-            { 1, 1, 1, 0, 1, 0 },
-            { 1, 0, 0, 1, 1, 1 },
-            { 1, 1, 1, 1, 0, 1 },
-            { 0, 0, 0, 0, 0, 1 }
-            };
+//	private static int[][] maze = {
+//            { 0, 1, 0, 0, 0, 0 },
+//            { 1, 1, 0, 1, 0, 1 },
+//            { 1, 0, 0, 1, 1, 0 },
+//            { 1, 0, 1, 0, 1, 0 },
+//            { 1, 1, 1, 0, 1, 0 },
+//            { 1, 0, 0, 1, 1, 1 },
+//            { 1, 1, 1, 1, 0, 1 },
+//            { 0, 0, 0, 0, 0, 1 }
+//            };
 
+	private static int[][] maze = {
+            { 0, 1, 0, 0, 0 },
+            { 1, 1, 0, 1, 0 },
+            { 1, 0, 1, 1, 1 },
+            { 1, 1, 1, 0, 1 },
+            { 0, 0, 0, 0, 1 }
+	};
+
+	
 	private static int numRows = maze.length;
 	private static int numCols = numRows > 0 ? maze[0].length : 0;	
 	private static int endRow = numRows -1;
@@ -47,28 +56,43 @@ public class Maze {
 	
 	static List<Cell<Integer, Integer>> list = new ArrayList<>();
 
-	private static boolean[][] wasHere = {
-            { false, false, false, false, false, false },
-            { false, false, false, false, false, false },
-            { false, false, false, false, false, false },
-            { false, false, false, false, false, false },
-            { false, false, false, false, false, false },
-            { false, false, false, false, false, false },
-            { false, false, false, false, false, false },
-            { false, false, false, false, false, false }
-            };
-	
-	private static int[][] correctPath = {
-            { 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0, 0 }
-            };
+//	private static boolean[][] wasHere = {
+//            { false, false, false, false, false, false },
+//            { false, false, false, false, false, false },
+//            { false, false, false, false, false, false },
+//            { false, false, false, false, false, false },
+//            { false, false, false, false, false, false },
+//            { false, false, false, false, false, false },
+//            { false, false, false, false, false, false },
+//            { false, false, false, false, false, false }
+//            };
 
+	private static boolean[][] wasHere = {
+            { false, false, false, false, false },
+            { false, false, false, false, false },
+            { false, false, false, false, false },
+            { false, false, false, false, false },
+            { false, false, false, false, false },
+	};
+	
+//	private static int[][] correctPath = {
+//            { 0, 0, 0, 0, 0, 0 },
+//            { 0, 0, 0, 0, 0, 0 },
+//            { 0, 0, 0, 0, 0, 0 },
+//            { 0, 0, 0, 0, 0, 0 },
+//            { 0, 0, 0, 0, 0, 0 },
+//            { 0, 0, 0, 0, 0, 0 },
+//            { 0, 0, 0, 0, 0, 0 },
+//            { 0, 0, 0, 0, 0, 0 }
+//            };
+
+	private static int[][] correctPath = {
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+	};
 	
 	    public static boolean recursiveSolve(int row, int col) {
 	        System.out.println("recursiveSolve(r=" + row + ", c=" + col + ")");

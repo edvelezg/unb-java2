@@ -4,15 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Date 04/25/2016
- * 
- * @author Tushar Roy
- *
- *         Insert/delete/search into trie data structure
- *
- *         Reference https://en.wikipedia.org/wiki/Trie
- */
 public class Trie {
 
 	private class TrieNode {
@@ -198,14 +189,6 @@ public class Trie {
 		System.out.println(node);
 		bf = new StringBuffer(pref);
 		getWords(node, pref);
-		
-//		Set<Character> keySet = curr.children.keySet();
-//		for (Iterator it = keySet.iterator(); it.hasNext();) {
-//			Character character = (Character) it.next();
-//			TrieNode node = curr.children.get(character);
-//			System.out.print(node);
-//			getWords(node);
-//		}
 	}
 	
 	public static void getWords(TrieNode node, String pref) {

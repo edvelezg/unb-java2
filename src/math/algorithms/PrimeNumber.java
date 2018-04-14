@@ -1,109 +1,60 @@
-package math.algorithms;
-
-import java.math.BigInteger;
-
 /**
- * @author egutarra
- *
+* Uses a linked list to implement the sieve of
+* Eratosthenes algorithm for finding prime numbers.
  */
+
+package math.algorithms;
+import java.util.*;
+
 public class PrimeNumber {
+	public static void main(String[] args) {
+		System.out.println("This program will tell you all prime");
+		System.out.println("numbers up to a given maximum.");
+		System.out.println();
 
-    private static BigInteger two = new BigInteger("2");
+		Scanner console = new Scanner(System.in);
+		System.out.print("Maximum number? ");
+		int max = console.nextInt();
 
-    public static BigInteger sqrt(BigInteger n) {
-        if (n.compareTo(new BigInteger("2")) == 0) {
-            System.out.println("Not an integer");
-            return null;
-        }
-        if (n.compareTo(BigInteger.ONE) == 0) {
-            return BigInteger.ONE;
-        }
-        if (n.compareTo(BigInteger.ZERO) <= 0) {
-            return BigInteger.ZERO;
-        }
+		List<Integer> primes = sieve(max);
+		System.out.println("Prime numbers up to " + max + ":");
+		System.out.println(primes);
+	}
 
-        BigInteger a = BigInteger.ONE;
-        BigInteger b = n.divide(two);
+	// Returns a list of all prime numbers up to given max
+	// using the sieve of Eratosthenes algorithm.
+	public static List<Integer> sieve(int max) {
+		List<Integer> primes = new LinkedList<Integer>();
+		primes.add(2); // 2 is known to be prime
+		
+		// add all numbers from 2 to max to a list
+		List<Integer> numbers = new LinkedList<Integer>();
+		for (int i = 3; i <= max; i+=2) {
+			numbers.add(i);
+		}
 
-        while (b.compareTo(a) >= 0) {
-            BigInteger mid = a.add(b).divide(two); // (a+b) >> 1
+		System.out.println(numbers);
+		
+		while (!numbers.isEmpty()) {
+			// remove a prime number from the
+			int front = numbers.remove(0);
+			primes.add(front);
+			
+			if (front >= Math.sqrt(max)) {
+				primes.addAll(numbers);
+				numbers.clear();
+			}
+			
+			// remove all multiples of this prime number
+			Iterator<Integer> itr = numbers.iterator();
+			while (itr.hasNext()) {
+				int current = itr.next();
+				if (current % front == 0) {
+					itr.remove();
+				}
+			}
+		}
 
-            if (mid.multiply(mid).compareTo(n) > 0)
-                b = mid.subtract(BigInteger.ONE);
-            else
-                a = mid.add(BigInteger.ONE);
-        }
-        return a.subtract(BigInteger.ONE);
-    }
-
-    @SuppressWarnings("unused")
-    private static void printBin(BigInteger n) {
-        System.out.println(String.format("%32s", Integer.toBinaryString(n.intValue())).replace(' ', '0'));
-    }
-
-    // A function to print all prime factors
-    // of a given number n
-    public static void primeFactors(int n) {
-        // Print the number of 2s that divide n
-        while (n % 2 == 0) {
-            System.out.print(2 + " ");
-            n /= 2;
-        }
-
-        // n must be odd at this point. So we can
-        // skip one element (Note i = i +2)
-        for (int i = 3; i <= Math.sqrt(n); i += 2) {
-            // While i divides n, print i and divide n
-            while (n % i == 0) {
-                System.out.print(i + " ");
-                n /= i;
-            }
-        }
-
-        // This condition is to handle the case when
-        // n is a prime number greater than 2
-        if (n > 2)
-            System.out.print(n);
-    }
-
-    @SuppressWarnings("unused")
-    private static void bigIntPrimeFactors(String number) throws Exception {
-        BigInteger num = new BigInteger(number);
-        BigInteger sqNum = sqrt(num);
-        for (int i = 2; i < sqNum.intValue(); i++) {
-            BigInteger fct = new BigInteger(String.valueOf(i));
-            BigInteger res = num.mod(fct);
-            if (res.intValue() == 0) {
-                num = num.divide(fct);
-                System.out.print(fct + " ");
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        // String number = "600851475143";
-        // bigIntPrimeFactors(number);
-        // System.out.println();
-        //
-        // // Only works for integers less than 2^31-1 = 2147483647
-        // primeFactors(Integer.MAX_VALUE - 1);
-        // System.out.println();
-        // primeFactors(Integer.MAX_VALUE);
-        // System.out.println();
-        // // Max is 2^31-1
-        // System.out.println(Integer.MAX_VALUE);
-        //
-        // // Min is -(2^31)
-        // System.out.println(Integer.MIN_VALUE);
-
-        String number2 = "144";
-        BigInteger sqrt = null;
-        try {
-            sqrt = sqrt(new BigInteger(number2));
-//            printBin(sqrt);
-            System.out.println(sqrt);
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-    }
+		return primes;
+	}
 }
