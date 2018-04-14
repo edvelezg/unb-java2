@@ -112,7 +112,7 @@ public class PrimeSum {
 
 	public static void main(String[] args) {
 		PrimeSum s = new PrimeSum();
-		System.out.println(s.primesum(4));
+		System.out.println(s.primesum(28));
 		// System.out.println(s.primeSum(64));
 
 	}
