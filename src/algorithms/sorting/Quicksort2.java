@@ -39,9 +39,11 @@ public class Quicksort2 {
 	}
 
 	public static void qs(int[] a, int l, int r) {
+		
+		System.out.println(String.format("%d, %d", l, r));
 		if (l >= r || count > 90) {
-			int[] ca = Arrays.copyOfRange(a, l, r+1);
-			System.out.println(Arrays.toString(ca));
+//			int[] ca = Arrays.copyOfRange(a, l, r+1);
+//			System.out.println(Arrays.toString(ca));
 			
 			return;
 		}
