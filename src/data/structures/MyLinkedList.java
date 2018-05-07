@@ -266,17 +266,21 @@ public class MyLinkedList {
 
 
 	private static ListNode newNode(int data) {
-		// Created new ListNode with data. 
+		// Created new ListNode2 with data. 
 		return new ListNode(data, null);
 	}
 
 	public static void main(String[] args) {
-		MyLinkedList l1 = new MyLinkedList("56801");
-		MyLinkedList l2 = new MyLinkedList("57991");
-		MyLinkedList lr = l1.subtractLinkedList(l2);
-		l1.print();
-		l2.print();
-		lr.print();
+		
+		MyLinkedList l1 = new MyLinkedList();
+
+		
+//		MyLinkedList l1 = new MyLinkedList("56801");
+//		MyLinkedList l2 = new MyLinkedList("57991");
+//		MyLinkedList lr = l1.subtractLinkedList(l2);
+//		l1.print();
+//		l2.print();
+//		lr.print();
 	}
 
 	@SuppressWarnings("unused")

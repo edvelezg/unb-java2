@@ -3,7 +3,19 @@ package algorithms.sorting;
 import java.util.Arrays;
 
 public class Quicksort2 {
-	private static int count = 0;
+	private static int[] ca;
+	private static int s;
+	private static int e;
+
+	public static void load(int a[], int s, int e) {
+		Quicksort2.s = s;
+		Quicksort2.e = e;
+		ca = Arrays.copyOfRange(a, s, e);
+	}
+
+	public static void reload(int a[]) {
+		ca = Arrays.copyOfRange(a, s, e);
+	}
 
 	private static String arrayToString(int[] array, int left, int right) {
 		StringBuffer buf = new StringBuffer();
@@ -31,8 +43,7 @@ public class Quicksort2 {
 
 	public static int part(int[] a, int l, int r) {
 		int p = a[(l + r) / 2];
-
-		int[] ca = Arrays.copyOfRange(a, l, r + 1);
+		load(a, l, r + 1);
 		System.out.println(String.format("%57s \t p: %d", arrayToString(ca, l, r), p));
 
 		while (l < r) {
@@ -51,26 +62,26 @@ public class Quicksort2 {
 				System.out.println(String.format("%57s \t p: %d", arrayToString(ca, l, r), p));
 			}
 		}
-		System.out.println(String.format("Split at: %d", l));
 		return l;
 	}
 
 	private static void swap(int[] a, int l, int r) {
-		System.out.println("Swapping(l=" + a[l] + ", r=" + a[r] + ")");
 		int t = a[l];
 		a[l] = a[r];
 		a[r] = t;
+		
+		reload(a);
 	}
 
 	public static void qs(int[] a, int l, int r) {
-		if (l >= r || count > 90) {
+		if (l >= r) {
 			int[] ca = Arrays.copyOfRange(a, l, r + 1);
-			System.out.println(String.format("%50s", arrayToString(ca, l, r)));
+			System.out.println(String.format("%57s", Arrays.toString(ca)));
 			return;
 		}
-		count += 1;
 
 		int idx = part(a, l, r);
+		System.out.println(String.format("Split at a[%d] = %d ", idx, a[idx]));
 		qs(a, l, idx - 1);
 		qs(a, idx, r);
 	}
