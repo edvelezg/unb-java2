@@ -4,6 +4,10 @@ package com.interview.dynamic;
  * http://www.geeksforgeeks.org/dynamic-programming-set-4-longest-common-
  * subsequence/
  */
+class Helper {
+	int[][] temp;
+	int max;
+}
 public class LongestCommonSubsequence {
 
     public int lcs(char str1[], char str2[], int len1, int len2) {
@@ -18,7 +22,7 @@ public class LongestCommonSubsequence {
         }
     }
 
-    public int lcsDynamic(char str1[], char str2[]) {
+    public Helper lcsDynamic(char str1[], char str2[]) {
 
         int temp[][] = new int[str1.length + 1][str2.length + 1];
         printMtx(temp);
@@ -36,7 +40,10 @@ public class LongestCommonSubsequence {
             }
         }
         printMtx(temp);
-        return max;
+        Helper h = new Helper();
+        h.max = max;
+        h.temp = temp;
+        return h;
 
     }
 
@@ -52,10 +59,11 @@ public class LongestCommonSubsequence {
 
     public static void main(String args[]) {
         LongestCommonSubsequence lcs = new LongestCommonSubsequence();
-        String str1 = "ABCDAF";
-        String str2 = "ACBCF";
+        String str1 = "azced";
+        String str2 = "abcdef";
 
-        int result = lcs.lcsDynamic(str1.toCharArray(), str2.toCharArray());
-        System.out.print(result);
+        Helper result = lcs.lcsDynamic(str1.toCharArray(), str2.toCharArray());
+        System.out.println(result.max);
+        printMtx(result.temp);
     }
 }

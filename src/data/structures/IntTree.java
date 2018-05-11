@@ -374,7 +374,7 @@ public class IntTree {
 			for (int i = 0; i < level; i++) {
 				System.out.print("    ");
 			}
-//			System.out.println(String.format("%d,%d", root.data, root.sum));
+			// System.out.println(String.format("%d,%d", root.data, root.sum));
 			System.out.println(String.format("%d", root.sum));
 			printSumNodes(root.left, level + 1);
 		}
@@ -384,11 +384,11 @@ public class IntTree {
 		if (rt == null)
 			return 0;
 		sum = rt.data;
-//		System.out.println(String.format("sumNodes(%d, %d)", rt.data, sum));
+		// System.out.println(String.format("sumNodes(%d, %d)", rt.data, sum));
 		sum += sumNodes(rt.left, sum);
-//		System.out.println(String.format("sumNodes(%d, %d)", rt.data, sum));
+		// System.out.println(String.format("sumNodes(%d, %d)", rt.data, sum));
 		sum += sumNodes(rt.right, sum);
-//		System.out.println(String.format("sumNodes(%d, %d)", rt.data, sum));
+		// System.out.println(String.format("sumNodes(%d, %d)", rt.data, sum));
 		rt.sum = sum;
 		return sum;
 	}
@@ -413,13 +413,12 @@ public class IntTree {
 	public static void main(String[] args) {
 
 		IntTree t = new IntTree();
-		// int[] array = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-		// 16 };
-		int[] array = { 0, 1, 2, 3, 4, 5, 6 };
+		int[] array = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+
 		t.createBST(array);
 		t.printSideways();
-		// t.printLeaves();
-		// t.printPreorder();
+		t.printLeaves();
+		t.printPreorder();
 
 		t.sumNodes();
 		t.BFS();

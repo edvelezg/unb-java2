@@ -25,19 +25,26 @@ public class PrimeNumber {
 	// using the sieve of Eratosthenes algorithm.
 	public static List<Integer> sieve(int max) {
 		List<Integer> primes = new LinkedList<Integer>();
-
+		primes.add(2); // 2 is known to be prime
+		
 		// add all numbers from 2 to max to a list
 		List<Integer> numbers = new LinkedList<Integer>();
-		for (int i = 2; i <= max; i++) {
+		for (int i = 3; i <= max; i+=2) {
 			numbers.add(i);
 		}
 
 		System.out.println(numbers);
+		
 		while (!numbers.isEmpty()) {
 			// remove a prime number from the
 			int front = numbers.remove(0);
 			primes.add(front);
-
+			
+			if (front >= Math.sqrt(max)) {
+				primes.addAll(numbers);
+				numbers.clear();
+			}
+			
 			// remove all multiples of this prime number
 			Iterator<Integer> itr = numbers.iterator();
 			while (itr.hasNext()) {
@@ -46,7 +53,6 @@ public class PrimeNumber {
 					itr.remove();
 				}
 			}
-			System.out.println(numbers);
 		}
 
 		return primes;
