@@ -49,6 +49,25 @@ public class BSTTree {
 		setRoot(recursiveAdd(getRoot(), value));
 	}
 
+	public boolean add(BSTN root, BSTN n) {
+		BSTN cur = root;
+		while (true) {
+			if (cur.val > n.val) {
+				if (cur.left == null) {
+					cur.left = n;
+					return true;
+				}
+				cur = cur.left;
+			} else {
+				if (cur.right == null) {
+					cur.right = n;
+					return true;
+				}
+				cur = cur.right;
+			}
+		}
+	}
+
 	public BSTN add(BSTN root, int val) {
 		BSTN cur = root;
 		while (true) {
@@ -69,25 +88,6 @@ public class BSTTree {
 				}
 			}
 
-		}
-	}
-
-	public boolean add(BSTN root, BSTN n) {
-		BSTN cur = root;
-		while (true) {
-			if (cur.val > n.val) {
-				if (cur.left == null) {
-					cur.left = n;
-					return true;
-				}
-				cur = cur.left;
-			} else {
-				if (cur.right == null) {
-					cur.right = n;
-					return true;
-				}
-				cur = cur.right;
-			}
 		}
 	}
 

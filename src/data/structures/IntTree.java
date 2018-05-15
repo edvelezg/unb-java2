@@ -94,7 +94,7 @@ public class IntTree {
 		}
 	}
 
-	public void preorderNoRecursion1() {
+	public void inOrderNoRecursion1() {
 		Stack<IntTreeNode> s = new Stack<IntTreeNode>();
 		IntTreeNode node = getOverallRoot();
 		s.push(node);
@@ -185,24 +185,6 @@ public class IntTree {
 		}
 	}
 
-	public void BFS2() {
-		IntTreeNode root = getOverallRoot();
-		Queue<IntTreeNode> curr = new ArrayDeque<IntTreeNode>();
-		Queue<IntTreeNode> next = new ArrayDeque<IntTreeNode>();
-		next.add(root);
-		while (!next.isEmpty()) {
-			if (curr.isEmpty()) {
-			}
-			IntTreeNode node = next.remove();
-			if (node.right != null) {
-				next.add(node.right);
-			}
-			if (node.left != null) {
-				next.add(node.left);
-			}
-		}
-	}
-
 	public int sum() {
 		return sum(getOverallRoot());
 	}
@@ -229,13 +211,13 @@ public class IntTree {
 		return countLeaves(getOverallRoot());
 	}
 
-	private int countLeaves(IntTreeNode rt) {
-		if (rt == null) {
+	private int countLeaves(IntTreeNode root) {
+		if (root == null) {
 			return 0;
-		} else if (rt.left == null && rt.right == null) {
+		} else if (root.left == null && root.right == null) {
 			return 1;
 		}
-		return countLeaves(rt.left) + countLeaves(rt.right);
+		return countLeaves(root.left) + countLeaves(root.right);
 
 	}
 
