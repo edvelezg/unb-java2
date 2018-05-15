@@ -5,7 +5,7 @@ public class Permutations {
     private final String in;
 
     public static void main(String[] args) {
-        Permutations p = new Permutations("abc");
+        Permutations p = new Permutations("abcd");
         p.permute();
     }
 
@@ -22,7 +22,7 @@ public class Permutations {
             return;
         }
         for ( int i = 0; i < in.length(); ++i ) {
-//            if ( used[i] ) continue;
+            if ( used[i] ) continue;
             out.append(in.charAt(i));
             used[i] = true;
             // System.out.println(String.format("befor: %5d%8s%12s", i, out, join(used)));
