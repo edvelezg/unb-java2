@@ -2,6 +2,7 @@ package data.structures;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -246,7 +247,6 @@ public class BinaryTree {
 	}
 
 	void findSum(TreeNode head, int sum, ArrayList<Integer> buffer, int level) {
-		System.out.println("findSum(head="+head+", sum="+sum+", buffer="+buffer+", level="+level+")");
 		if (head == null)
 			return;
 		int tmp = sum;
@@ -261,6 +261,23 @@ public class BinaryTree {
 		findSum(head.left, sum, c1, level + 1);
 		findSum(head.right, sum, c2, level + 1);
 	}
+	
+	void visitAndPrintBuffer(TreeNode head,ArrayList<Integer> buffer, int level) {
+//		System.out.println("findSum(head="+head+", sum="+sum+", buffer="+buffer+", level="+level+")");
+		if (head == null)
+			return;
+		buffer.add(head.data);
+		int sum = 0;
+		for (int i = 0; i < buffer.size(); i++) {
+			sum += buffer.get(i);
+		}
+		System.out.println(String.format("%s = %d", buffer, sum));
+		ArrayList<Integer> c1 = (ArrayList<Integer>) buffer.clone();
+		ArrayList<Integer> c2 = (ArrayList<Integer>) buffer.clone();
+		visitAndPrintBuffer(head.left, c1, level + 1);
+		visitAndPrintBuffer(head.right,c2, level + 1);
+	}
+
 
 	void print(ArrayList<Integer> buffer, int level, int i2) {
 		for (int i = level; i <= i2; i++) {
@@ -277,17 +294,17 @@ public class BinaryTree {
 		BinaryTree tree2 = new BinaryTree();
 		int[] b = new int[] { 4, 5, 6 };
 		tree2.createMinimalBST(b);
-
-		tree.printSideways();
-		tree2.printSideways();
 		
-		ArrayList<Integer> buffer = new ArrayList<>();
-		tree.findSum(tree.root, 10, buffer, 0);
 		// LinkedList<LinkedList<TreeNode>> lists = tree.getLevelLists();
 		// for (LinkedList<TreeNode> list : lists) {
 		// System.out.println(Arrays.toString(list.toArray()));
 		// }
 
 		tree.subTree(tree.root, tree2.root);
+
+		ArrayList<Integer> buffer = new ArrayList<>();
+		tree.findSum(tree.root, 4, buffer, 0);
+//		tree.findSum(tree.root, 10, buffer, 0);
+
 	}
 }
