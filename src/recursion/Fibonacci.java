@@ -20,29 +20,21 @@ public class Fibonacci {
 
 
 	private int fib(int n) {
-		// System.out.println("fib(n="+n+")");
 		if (n == 0 || n == 1) {
-			count += 1;
-			// System.out.println(String.format("calls: %d", count));
 			return n;
 		}
 		if (array[n - 1] != 0) {
-			count += 1;
 			return array[n - 1];
 		} else {
-			count += 1;
 			array[n - 1] = fib(n - 1) + fib(n - 2);
 			return array[n - 1];
 		}
 	}
 
 	private int rawFib(int n) {
-		// System.out.println("rawFib(n="+n+")");
 		if (n == 0 || n == 1) {
-			count += 1;
 			return n;
 		} else {
-			count += 1;
 			return rawFib(n - 1) + rawFib(n - 2);
 		}
 	}

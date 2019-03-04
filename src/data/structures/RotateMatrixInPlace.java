@@ -34,7 +34,7 @@ public class RotateMatrixInPlace {
 
 	public static void main(String[] args) {
 
-		int n = 7;
+		int n = 5;
 		char[][] mtx = new char[n][n];
 		for (int i = 0; i < n * n; i++) {
 			mtx[i / n][i % n] = (char) ('A' + i);

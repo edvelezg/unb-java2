@@ -12,20 +12,21 @@ public class Combinations {
 	}
 
 	private void combine(int start) {
-		System.out.println("combine(start="+start+")");
+//		System.out.println(String.format("combine(%d)", start));
 		for (int i = start; i < in.length(); ++i) {
 			out.append(in.charAt(i));
 			System.out.println(out);
-//			if (i < in.length())
+			if (i < in.length()) {
 				combine(i + 1);
-//				System.out.println("back combine(start="+start+")");
+//  				System.out.println(String.format("combine(%d) <--", start));
+			}
 
 			out.setLength(out.length() - 1);
 		}
 	}
 	
 	public static void main(String[] args) {
-		Combinations cmb = new Combinations("abcd");
+		Combinations cmb = new Combinations("abcde");
 		cmb.combine();
 	}
 }
