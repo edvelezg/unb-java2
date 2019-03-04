@@ -56,5 +56,45 @@ public class RotateMatrixInPlace {
 	public RotateMatrixInPlace() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	@SuppressWarnings("unused")
+	private static void printDiagonals(char[][] mtx) {
+		goingNorthEast(mtx);
+		System.out.println();
+		goingNorthWest(mtx);
+		
+	}
+	
+	private static void goingNorthWest(char[][] mtx) {
+		for (int i = 0; i < mtx.length; ++i) {
+			for (int j = 0; j < i + 1; ++j) {
+				System.out.print(mtx[i - j][mtx.length-1-j] + " ");
+			}
+			System.out.println();
+		}
+		for (int i = mtx.length-1; i > 0; --i) {
+			for (int j = mtx.length - i, k = mtx.length - 1; j < mtx.length; ++j) {
+				System.out.print(mtx[k--][mtx.length-1-j] + " ");
+			}
+			System.out.println();
+		}
+	}
+
+
+	@SuppressWarnings("unused")
+	private static void goingNorthEast(char[][] mtx) {
+		for (int i = 0; i < mtx.length; ++i) {
+			for (int j = 0; j < i + 1; ++j) {
+				System.out.print(mtx[i - j][j] + " ");
+			}
+			System.out.println();
+		}
+		for (int i = mtx.length-1; i > 0; --i) {
+			for (int j = mtx.length - i, k = mtx.length - 1; j < mtx.length; ++j) {
+				System.out.print(mtx[k--][j] + " ");
+			}
+			System.out.println();
+		}
+	}
 
 }
