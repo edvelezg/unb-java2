@@ -23,13 +23,19 @@ public class SortAMap {
 		
 		Set<Entry<String, Integer>> entrySet = unsortedMap.entrySet();
 		LinkedList<Entry<String, Integer>> entryList = new LinkedList<Entry<String, Integer>>(entrySet);
-		Collections.sort(entryList, new Comparator<Entry<String, Integer>>() {
-			@Override
-			public int compare(Entry<String, Integer> arg0, Entry<String, Integer> arg1) {
-				return arg1.getValue().compareTo(arg0.getValue());
-			}
-		});
-		
+
+		// Using Anonymous class
+//		Collections.sort(entryList, new Comparator<Entry<String, Integer>>() {
+//			@Override
+//			public int compare(Entry<String, Integer> arg0, Entry<String, Integer> arg1) {
+//				return arg1.getValue().compareTo(arg0.getValue());
+//			}
+//		});
+
+		// Using lambda
+		Collections.sort(entryList, (arg0, arg1) -> arg1.getValue().compareTo(arg0.getValue()));
+
+
 		System.out.println(entryList);
 		
 		LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
@@ -38,11 +44,6 @@ public class SortAMap {
 		}
 		
 		System.out.println(sortedMap);
-		
-//		Collections.sort((List<T>) unsortedMap);
-//		Entry<String, Integer> entry = new Entry<String, Integer>("apple", 20);
-//		list.add(  );
-		
         ArrayList<Integer> counts = new ArrayList<>(5);
         
 	}
