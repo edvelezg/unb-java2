@@ -24,7 +24,8 @@ public class Kadane {
 	public static void main(String[] args) {
 //		int maxSum = maxContSum(new int [] { -7, -6, 1, 2, -4, 3 ,-2, 1, 2, 4});
 //		int maxSum = maxContSum(new int [] { -7, -6, 1, 2, -4, 3 ,-2, 1 });
-		int maxSum = maxContSum(new int [] { 1, 2, -4, 3 ,-2, -1, 1, 2, -4, -1, 2, -1, 2 });
+//		int maxSum = maxContSum(new int [] { 1, 2, -4, 3 ,-2, -1, 1, 2, -4, -1, 2, -1, 2 });
+		int maxSum = maxContSum(new int [] { 1, 2, 1, -4, 2, 2, -5});
 		System.out.println("maxSum:" + maxSum);
 	}
 	
@@ -39,12 +40,14 @@ public class Kadane {
 		int am = Integer.MIN_VALUE, rm = 0;
 
 		for (int i = 0; i < size; i++) {
-			rm = rm + a[i];
-			if (am < rm)
-				am = rm;
+			rm += a[i];
+
 			if (rm < 0)
 				rm = 0;
-			
+
+			if (rm > am)
+				am = rm;
+
 			rm_array[i] = rm;
 		}
 		findMaxSums(rm_array, am, a);

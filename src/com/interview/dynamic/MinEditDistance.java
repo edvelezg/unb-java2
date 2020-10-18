@@ -111,11 +111,12 @@ public class MinEditDistance {
     }
 
     public static void main(String args[]) {
-        String str1 = "bcd";
-        String str2 = "abcd";
+        String str1 = "abcd";
+        String str2 = "bcd";
         MinEditDistance editDistance = new MinEditDistance();
-        int result = editDistance.dynamicEditDistance(str1.toCharArray(), str2.toCharArray());
-        System.out.print(result);
+//        int result = editDistance.dynamicEditDistance(str1.toCharArray(), str2.toCharArray());
+//        System.out.print(result);
+        editDistance.recEditDistance(str1.toCharArray(), str2.toCharArray(), 0, 0);
     }
 
 }

@@ -96,7 +96,7 @@ public class NQueenProblem2 {
 	 
 	        if (solveNQUtil(board, 0) == false)
 	        {
-	            System.out.print("Solution does not exist");
+	            System.out.print("TotalScore does not exist");
 	            return false;
 	        }
 	 
