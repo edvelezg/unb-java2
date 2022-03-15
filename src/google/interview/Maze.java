@@ -22,23 +22,11 @@ class Cell<R, C> {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return String.format("(%d, %d)", row, col);
 	}
 }
 
 public class Maze {
-	
-//	private static int[][] maze = {
-//            { 0, 1, 0, 0, 0, 0 },
-//            { 1, 1, 0, 1, 0, 1 },
-//            { 1, 0, 0, 1, 1, 0 },
-//            { 1, 0, 1, 0, 1, 0 },
-//            { 1, 1, 1, 0, 1, 0 },
-//            { 1, 0, 0, 1, 1, 1 },
-//            { 1, 1, 1, 1, 0, 1 },
-//            { 0, 0, 0, 0, 0, 1 }
-//            };
 
 	private static int[][] maze = {
             { 0, 1, 0, 0, 0 },
@@ -56,17 +44,6 @@ public class Maze {
 	
 	static List<Cell<Integer, Integer>> list = new ArrayList<>();
 
-//	private static boolean[][] wasHere = {
-//            { false, false, false, false, false, false },
-//            { false, false, false, false, false, false },
-//            { false, false, false, false, false, false },
-//            { false, false, false, false, false, false },
-//            { false, false, false, false, false, false },
-//            { false, false, false, false, false, false },
-//            { false, false, false, false, false, false },
-//            { false, false, false, false, false, false }
-//            };
-
 	private static boolean[][] wasHere = {
             { false, false, false, false, false },
             { false, false, false, false, false },
@@ -74,17 +51,6 @@ public class Maze {
             { false, false, false, false, false },
             { false, false, false, false, false },
 	};
-	
-//	private static int[][] correctPath = {
-//            { 0, 0, 0, 0, 0, 0 },
-//            { 0, 0, 0, 0, 0, 0 },
-//            { 0, 0, 0, 0, 0, 0 },
-//            { 0, 0, 0, 0, 0, 0 },
-//            { 0, 0, 0, 0, 0, 0 },
-//            { 0, 0, 0, 0, 0, 0 },
-//            { 0, 0, 0, 0, 0, 0 },
-//            { 0, 0, 0, 0, 0, 0 }
-//            };
 
 	private static int[][] correctPath = {
             { 0, 0, 0, 0, 0 },
